@@ -2,14 +2,40 @@
 <html lang="th">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>โพยหวย</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ระบบโพยหวย</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <h2>ระบบโพยหวย</h2>
-  <div id="app"></div>
+
+  <!-- ประเภทหวย -->
+  <div>
+    <label for="lotto-type">ประเภทหวย:</label>
+    <select id="lotto-type">
+      <option value="government">หวยรัฐบาล</option>
+      <option value="hanoi">หวยฮานอย</option>
+      <option value="laos">หวยลาว</option>
+    </select>
+  </div>
+
+  <!-- ปุ่มกดเลข -->
+  <div id="number-pad"></div>
+
+  <!-- กลับเลข และราคาที่ใส่ -->
+  <div>
+    <input type="number" id="price" placeholder="ราคา" />
+    <label><input type="checkbox" id="reverse-number" /> กลับเลข</label>
+    <button id="add-to-list">เพิ่มรายการ</button>
+  </div>
+
+  <!-- รายการโพย -->
+  <h3>โพยของคุณ</h3>
+  <ul id="lotto-list"></ul>
+
+  <button id="submit-btn">ส่งโพย</button>
 
   <script type="module" src="script.js"></script>
 </body>
 </html>
+
