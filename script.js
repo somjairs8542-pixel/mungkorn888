@@ -1,24 +1,25 @@
-// 1. import firebase
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-app.js";
-import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-database.js";
+const numberPad = document.getElementById('number-pad');
 
-// 2. config Firebase
-const firebaseConfig = {
-  apiKey: "AIzaSyB0_WAvqnepPH2slauRyXh7y14uhvvJ2rM",
-  authDomain: "mungkorn888-72072.firebaseapp.com",
-  databaseURL: "https://mungkorn888-72072-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "mungkorn888-72072",
-  storageBucket: "mungkorn888-72072.appspot.com",
-  messagingSenderId: "15500489348",
-  appId: "1:15500489348:web:3cee0ae802bc04eb5c48d1",
-  measurementId: "G-VH5Y1T4PNT"
-};
+for (let i = 0; i <= 99; i++) {
+  const number = i.toString().padStart(2, '0');
+  const btn = document.createElement('button');
+  btn.textContent = number;
+  btn.onclick = () => selectNumber(number);
+  numberPad.appendChild(btn);
+}
 
-// 3. initialize Firebase
-const app = initializeApp(firebaseConfig);
-const db = getDatabase(app);
+function selectNumber(number) {
+  const price = document.getElementById('price').value;
+  const reverse = document.getElementById('reverse-number').checked;
+  const list = document.getElementById('lotto-list');
 
-// 4. ส่งข้อมูลทดสอบ
-set(ref(db, 'test'), {
-  message: 'เชื่อม Firebase สำเร็จ!'
-});
+  if (!price) {
+    alert('กรุณาใส่ราคา');
+    return;
+  }
+
+  const li = document.createElement('li');
+  li.textContent = `เลข: ${number} ราคา: ${price} บาท ${reverse ? '(กลับเลข)' : ''}`;
+  list.appendChild(li);
+}
+
